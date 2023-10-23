@@ -1966,7 +1966,7 @@ module.exports = function (RED) {
 
                 // Create new webhooks.
                 let supportedEventsResponse = await shellyRequestAsync('GET', '/rpc/Webhook.ListSupported', null, null, credentials);
-                for (let hookType of supportedEventsResponse.hook_types) {  
+                for (let hookType in supportedEventsResponse.types) {  
                     let sender = node.hostname;
                     let url = webhookUrl + '?hookType=' + hookType + '&sender=' + sender;
                     let createParams = { 
